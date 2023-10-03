@@ -1,0 +1,64 @@
+// Callback Hell example
+class UserStorage {
+    async loginUser(id, password) {
+        return setTimeout(() => {
+                if (
+                    (id === 'ellie' && password === 'dreams') || 
+                    (id === 'coder' && password === 'academy')
+                ) {
+                    return(id);
+                } else {
+                    throw(new Error('not found'))
+                }
+            }, 2000)
+    }
+
+    async getRoles(user) {
+        return setTimeout(() => {
+                if (user === 'ellie') {
+                    return({name: 'ellie', role: 'admin'});
+                } else {
+                    throw(new Error('no access'))
+                }
+            }, 1000)
+    }
+
+}
+
+const userStorage = new UserStorage();
+const id = prompt('enter you id');
+const pw = prompt('enter your password');
+
+let a = userStorage.loginUser(id, pw)
+
+
+// console.log(userStorage.loginUser())
+
+// const userStorage = new UserStorage();
+// const id = prompt('enter your id');
+// const password = prompt('enter your password');
+
+// userStorage.loginUser(id, password)
+//     .catch((error) => {
+//         console.log(error)
+//     })
+//     .then((user) => {
+//         return userStorage.getRoles(user)
+//     })
+//     .then((result) => {
+//         alert(`Hello ${result.name}, you have a ${result.role} role`);
+//     })
+//     .catch((error) => {
+//         console.log(error)
+//     })
+
+
+// userStorage.loginUser(id, password, user => {
+//     userStorage.getRoles(user, (userWithRole) => {
+//         alert(`Hello ${userWithRole.name}, you have a ${userWithRole.role} role`);
+//     }, (error) => {
+//         console.log(error)
+//     })
+// }, (error) => {
+//     console.log(error)
+// })
